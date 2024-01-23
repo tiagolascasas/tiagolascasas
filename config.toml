@@ -1,0 +1,7 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'Tiago Lascasas Santos'
+theme = 'ananke'
+
+[outputs]
+  home = ["HTML", "Sitemap"]
