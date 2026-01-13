@@ -1,11 +1,12 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
-import { blogPosts } from '../data/blogPosts';
-import './Blog.css'; // Reusing Blog styles
+import ReactMarkdown from 'react-markdown';
+import { getPostBySlug } from '../utils/posts';
+import './Blog.css';
 
 export default function BlogPost() {
     const { slug } = useParams();
-    const post = blogPosts.find(p => p.slug === slug);
+    const post = getPostBySlug(slug);
 
     if (!post) {
         return <Navigate to="/blog" replace />;
@@ -37,10 +38,9 @@ export default function BlogPost() {
                     </div>
                 </header>
 
-                <div
-                    className="post-content"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                <div className="post-content">
+                    <ReactMarkdown>{post.content}</ReactMarkdown>
+                </div>
             </article>
         </div>
     );
