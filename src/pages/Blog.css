@@ -1,0 +1,90 @@
+.blog-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.blog-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.blog-header h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.blog-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.blog-post {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-post:last-child {
+    border-bottom: none;
+}
+
+.post-title {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.post-title:hover {
+    color: var(--accent-primary);
+}
+
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tags-list {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.post-tag {
+    color: var(--text-secondary);
+}
+
+.post-excerpt {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    font-weight: 500;
+    color: var(--accent-primary);
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
