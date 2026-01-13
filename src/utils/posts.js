@@ -1,7 +1,7 @@
 import fm from 'front-matter';
 
 // Load all markdown files from ../posts/
-const modules = import.meta.glob('../posts/*.md', { as: 'raw', eager: true });
+const modules = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default', eager: true });
 
 export function getPosts() {
     const posts = Object.entries(modules).map(([path, fileContent]) => {

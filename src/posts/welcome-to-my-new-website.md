@@ -1,19 +1,12 @@
 ---
-title: Welcome to my new website
-date: January 13, 2025
-excerpt: Welcome to my personal corner on the web! This space will serve as a hub for my academic research, technical projects, and thoughts on software engineering and embedded systems.
-tags: ["Personal", "Announcement"]
+title: My new personal website is live
+date: January 13, 2026
+excerpt: Welcome to my new website, and in particular to this blog section.
+tags: ["Personal"]
 ---
 
-I finally decided to build a proper personal website to showcase my research and projects. After relying on institutional profiles and scattered repositories, I wanted a central place to document my work.
+As the end of my PhD research and teaching duties dawns on me, and I start to adopt a more industry-looking profile, I have decided to finally build a proper personal website. I've tried to collect everything of note that best showcases what I've been doing, from an (hopefully) always up-to-date CV, a list of all publications I've done during my MSc and PhD, a portfolio showcasing my best open-source projects, and also a little blog section, which I hope to fill in as time goes on.
 
-This site is built with **React** and **Vite**, hosted statically on **GitHub Pages**. It's designed to be lightweight, fast, and easy to maintain.
+I've also used this opportunity to continue experimenting with AI agents, and more specifically Google's Antigravity IDE. While I know my way around web development, I was rather displeased with the static site generator I had been using (Hugo), and therefore decided to let Antigravity suggest a framework and create all the scaffolding for me to fill in. I was pleased with the result, and after a lot of manual fine-tuning, I think it turned out well. I still have many questions about how these AI agents can adequately scale for big, production-ready applications that have years of tech debt on them - you know, the majority of software out there - without causing more headaches than they end up solving... but for prototyping, exploration and smaller projects, they're quite alright.
 
-In the coming months, I plan to write about:
-
-* CPU-FPGA Co-design and Heterogeneous Computing
-* High-Level Synthesis (HLS) optimization techniques
-* Updates on my PhD research progress
-* Interesting coding challenges and solutions
-
-Feel free to look around and reach out if you'd like to collaborate!
+All content on this blog is, however, 100% human-written, notwithstanding the contribution of spellcheckers and the like. Even a simple blog post requires creativity, in word choice if nothing else, and creativity is an inherently human and personal attribute. And a *personal* blog could never accurately reflect the person in cause if it was all delegated to an LLM.

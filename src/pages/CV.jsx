@@ -19,7 +19,7 @@ export default function CV() {
 
                 <div className="timeline">
                     <div className="timeline-item">
-                        <div className="timeline-date">Present</div>
+                        <div className="timeline-date">2021 - Present</div>
                         <div className="timeline-content">
                             <h3>Teaching Assistant</h3>
                             <h4>Faculty of Engineering, University of Porto (FEUP)</h4>
@@ -28,7 +28,7 @@ export default function CV() {
                     </div>
 
                     <div className="timeline-item">
-                        <div className="timeline-date">Present</div>
+                        <div className="timeline-date">2020 - Present</div>
                         <div className="timeline-content">
                             <h3>Researcher</h3>
                             <h4>INESC-TEC</h4>
@@ -46,7 +46,7 @@ export default function CV() {
 
                 <div className="timeline">
                     <div className="timeline-item">
-                        <div className="timeline-date">Present</div>
+                        <div className="timeline-date">2020 - Present</div>
                         <div className="timeline-content">
                             <h3>PhD in Electrical and Computer Engineering</h3>
                             <h4>Faculty of Engineering, University of Porto (FEUP)</h4>
@@ -54,7 +54,7 @@ export default function CV() {
                     </div>
                     {/* Placeholder for previous education */}
                     <div className="timeline-item">
-                        <div className="timeline-date">2020</div>
+                        <div className="timeline-date">2015 - 2020</div>
                         <div className="timeline-content">
                             <h3>MSc in Electrical and Computer Engineering</h3>
                             <h4>Faculty of Engineering, University of Porto (FEUP)</h4>

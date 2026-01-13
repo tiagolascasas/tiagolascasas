@@ -12,7 +12,7 @@ export default function Home() {
 
                 <div className="profile-info">
                     <h1 className="name">Tiago Lascasas Santos</h1>
-                    <h2 className="title">Software Developer & PhD Student</h2>
+                    <h2 className="title">Software Developer, PhD Student, and Teaching Assistant</h2>
 
                     <p className="bio">
                         I am a PhD student and TA at the University of Porto, Faculty of Engineering (<a href="https://sigarra.up.pt/feup/en/web_page.Inicial" target="_blank" rel="noopener noreferrer">FEUP</a>) and <a href="https://www.inesctec.pt/en" target="_blank" rel="noopener noreferrer">INESC-TEC</a>.
