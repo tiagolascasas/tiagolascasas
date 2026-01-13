@@ -1,4 +1,5 @@
-import { Briefcase, GraduationCap, Code } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Briefcase, GraduationCap, Code, ArrowRight } from 'lucide-react';
 import './CV.css';
 
 export default function CV() {
@@ -100,7 +101,8 @@ export default function CV() {
                             <span>C++</span>
                             <span>Java</span>
                             <span>Python</span>
-                            <span>JavaScript/TypeScript</span>
+                            <span>JavaScript</span>
+                            <span>TypeScript</span>
                         </div>
                     </div>
                     <div className="skill-category">
@@ -123,12 +125,39 @@ export default function CV() {
                         <div className="tags">
                             <span>Teaching skills</span>
                             <span>Research skills</span>
-                            <span>Technical Writing</span>
-                            <span>Event Organization</span>
+                            <span>Technical writing</span>
+                            <span>Event organization</span>
                             <span>Multimodal presentation skills</span>
                             <span>Fluency in English & Portuguese</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className="cv-section">
+                <div className="section-title">
+                    <Code className="icon" />
+                    <h2>Detailed Work</h2>
+                </div>
+
+                <div className="details-grid">
+                    <Link to="/research" className="details-card">
+                        <h3>Research & Publications</h3>
+                        <p>View my academic publications, conference talks, and other projects</p>
+                        <div className="link-text">
+                            <span>Go to Research</span>
+                            <ArrowRight size={16} />
+                        </div>
+                    </Link>
+
+                    <Link to="/portfolio" className="details-card">
+                        <h3>Portfolio</h3>
+                        <p>Explore the open-source projects developed during my PhD</p>
+                        <div className="link-text">
+                            <span>Go to Portfolio</span>
+                            <ArrowRight size={16} />
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail, FileText, Monitor } from 'lucide-react';
-import profileImg from '../assets/profile.png';
+import profileImg from '../assets/me.jpeg';
 import './Home.css';
 
 export default function Home() {

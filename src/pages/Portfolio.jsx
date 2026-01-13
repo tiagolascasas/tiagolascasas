@@ -4,31 +4,40 @@ import './Portfolio.css';
 const projects = [
     {
         id: 1,
-        title: 'Native OpenGL Engine',
-        description: 'A native Linux OpenGL 3D rendering engine featuring a first-person fly camera, shader management, and basic geometry rendering.',
-        tags: ['C++', 'OpenGL', 'Linux', 'GLSL'],
+        title: 'Coming soon!',
+        description: 'A placeholder for now',
+        tags: ['C', 'C++', 'Compiler', 'Source-to-Source', 'Code transformations'],
         links: {
-            github: 'https://github.com/tiagolascasas/opengl-scene', // Placeholder link
+            github: 'https://github.com/tiagolascasas', // Placeholder link
         }
     },
-    {
-        id: 2,
-        title: 'CPU-FPGA Partitioning Framework',
-        description: 'PhD research project focusing on the simultaneous and holistic partitioning and optimization of C/C++ applications in heterogeneous CPU-FPGA systems.',
-        tags: ['C++', 'FPGA', 'HLS', 'Research'],
-        links: {
-            // No link for private research yet
-        }
-    },
-    {
-        id: 3,
-        title: 'Personal Website',
-        description: 'A static, responsive personal portfolio website built with React and Vite, featuring dark mode and a premium design system.',
-        tags: ['React', 'Vite', 'CSS', 'GitHub Pages'],
-        links: {
-            github: 'https://github.com/tiagolascasas/tiagolascasas.github.io'
-        }
-    }
+    // {
+    //     id: 1,
+    //     title: 'Native OpenGL Engine',
+    //     description: 'A native Linux OpenGL 3D rendering engine featuring a first-person fly camera, shader management, and basic geometry rendering.',
+    //     tags: ['C++', 'OpenGL', 'Linux', 'GLSL'],
+    //     links: {
+    //         github: 'https://github.com/tiagolascasas/opengl-scene', // Placeholder link
+    //     }
+    // },
+    // {
+    //     id: 2,
+    //     title: 'CPU-FPGA Partitioning Framework',
+    //     description: 'PhD research project focusing on the simultaneous and holistic partitioning and optimization of C/C++ applications in heterogeneous CPU-FPGA systems.',
+    //     tags: ['C++', 'FPGA', 'HLS', 'Research'],
+    //     links: {
+    //         // No link for private research yet
+    //     }
+    // },
+    // {
+    //     id: 3,
+    //     title: 'Personal Website',
+    //     description: 'A static, responsive personal portfolio website built with React and Vite, featuring dark mode and a premium design system.',
+    //     tags: ['React', 'Vite', 'CSS', 'GitHub Pages'],
+    //     links: {
+    //         github: 'https://github.com/tiagolascasas/tiagolascasas.github.io'
+    //     }
+    // }
 ];
 
 export default function Portfolio() {
