@@ -14,7 +14,7 @@ export default function Layout() {
             <header className="header">
                 <div className="container header-container">
                     <NavLink to="/" className="logo-link" onClick={closeMenu}>
-                        Tiago Lascasas
+                        Tiago Lascasas Santos
                     </NavLink>
 
                     <div className="header-actions">
