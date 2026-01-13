@@ -22,7 +22,7 @@ export default function Layout() {
                             <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>
                             <NavLink to="/cv" className="nav-link" onClick={closeMenu}>CV</NavLink>
                             <NavLink to="/portfolio" className="nav-link" onClick={closeMenu}>Portfolio</NavLink>
-                            <NavLink to="/publications" className="nav-link" onClick={closeMenu}>Publications</NavLink>
+                            <NavLink to="/research" className="nav-link" onClick={closeMenu}>Research</NavLink>
                             <NavLink to="/blog" className="nav-link" onClick={closeMenu}>Blog</NavLink>
                         </nav>
 

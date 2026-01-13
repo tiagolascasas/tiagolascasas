@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { ExternalLink, Quote, FileText } from 'lucide-react';
-import './Publications.css';
+import { ExternalLink, Quote, FileText, CheckCircle } from 'lucide-react';
+import './Research.css';
 
 const publications = [
     {
         id: 'santos2025ph',
-        citation: 'T. Santos, J. Bispo, and J. M. P. Cardoso, "Ph. D. Project: Holistic Partitioning and Optimization of CPU-FPGA Applications Through Source-to-Source Compilation," in 2025 IEEE 33rd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM), 2025, pp. 308-309.',
+        citation: 'T. Santos, J. Bispo, and J. M. P. Cardoso, "Ph. D. Project: Holistic Partitioning and Optimization of CPU-FPGA Applications Through Source-to-Source Compilation," in 2025 IEEE 33rd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM), 2025.',
         bibtex: `@inproceedings{santos2025ph,
   title={Ph. D. Project: Holistic Partitioning and Optimization of CPU-FPGA Applications Through Source-to-Source Compilation},
   author={Santos, Tiago and Bispo, Joo and Cardoso, Joo MP},
@@ -100,7 +100,7 @@ const publications = [
     }
 ];
 
-export default function Publications() {
+export default function Research() {
     const [copiedId, setCopiedId] = useState(null);
 
     const copyBibtex = (id, bibtex) => {
@@ -111,47 +111,69 @@ export default function Publications() {
     };
 
     return (
-        <div className="publications-container fade-in">
-            <div className="publications-header">
-                <h1>Publications</h1>
-                <p>A selected list of my research publications.</p>
+        <div className="research-container fade-in">
+            <div className="research-header">
+                <h1>Research</h1>
+                <p>My academic research, including publications, talks, and other contributions.</p>
             </div>
 
-            <div className="publications-list-simple">
-                {publications.map(pub => (
-                    <div key={pub.id} className="citation-card">
-                        <p className="citation-text">
-                            {pub.citation}
-                            {pub.link && <a href={pub.link} target="_blank" rel="noopener noreferrer" className="paper-link">[Paper]</a>}
-                        </p>
+            <section className="research-section">
+                <h2>Publications</h2>
+                <div className="publications-list-simple">
+                    {publications.map(pub => (
+                        <div key={pub.id} className="citation-card">
+                            <p className="citation-text">
+                                {pub.citation}
+                            </p>
 
-                        <div className="citation-actions">
-                            <button
-                                className="action-btn"
-                                onClick={() => copyBibtex(pub.id, pub.bibtex)}
-                                title="Copy BibTeX"
-                            >
-                                <Quote size={16} />
-                                <span>{copiedId === pub.id ? 'Copied!' : 'BibTeX'}</span>
-                            </button>
+                            <div className="citation-actions">
+                                <button
+                                    className="action-btn"
+                                    onClick={() => copyBibtex(pub.id, pub.bibtex)}
+                                    title="Copy BibTeX"
+                                >
+                                    <Quote size={16} />
+                                    <span>{copiedId === pub.id ? 'Copied!' : 'BibTeX'}</span>
+                                </button>
 
-                            {pub.pdf && (
-                                <a href={pub.pdf} className="action-btn" target="_blank" rel="noopener noreferrer">
-                                    <FileText size={16} />
-                                    <span>PDF</span>
-                                </a>
-                            )}
+                                {pub.pdf && (
+                                    <a href={pub.pdf} className="action-btn" target="_blank" rel="noopener noreferrer">
+                                        <FileText size={16} />
+                                        <span>PDF</span>
+                                    </a>
+                                )}
 
-                            {pub.link && (
-                                <a href={pub.link} className="action-btn" target="_blank" rel="noopener noreferrer">
-                                    <ExternalLink size={16} />
-                                    <span>Link</span>
-                                </a>
-                            )}
+                                {pub.link && (
+                                    <a href={pub.link} className="action-btn" target="_blank" rel="noopener noreferrer">
+                                        <ExternalLink size={16} />
+                                        <span>Link</span>
+                                    </a>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </section>
+
+            <section className="research-section">
+                <h2>Talks</h2>
+                <p className="placeholder-text">Coming soon...</p>
+                {/* 
+                <ul className="simple-list">
+                    <li>"My Cool Talk", Conference X, 2025.</li>
+                </ul> 
+                */}
+            </section>
+
+            <section className="research-section">
+                <h2>Tutorials</h2>
+                <p className="placeholder-text">Coming soon...</p>
+            </section>
+
+            <section className="research-section">
+                <h2>Organization</h2>
+                <p className="placeholder-text">Coming soon...</p>
+            </section>
         </div>
     );
 }
