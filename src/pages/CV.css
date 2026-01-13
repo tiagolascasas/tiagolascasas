@@ -146,3 +146,15 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
+.course-list {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.course-list li {
+    margin-bottom: 0.25rem;
+}

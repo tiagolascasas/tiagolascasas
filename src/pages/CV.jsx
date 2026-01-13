@@ -19,20 +19,23 @@ export default function CV() {
 
                 <div className="timeline">
                     <div className="timeline-item">
-                        <div className="timeline-date">2021 - Present</div>
+                        <div className="timeline-date">2022 - Present</div>
                         <div className="timeline-content">
                             <h3>Teaching Assistant</h3>
                             <h4>Faculty of Engineering, University of Porto (FEUP)</h4>
-                            <p>Assisting in courses related to Computer Engineering and Embedded Systems.</p>
+                            <ul className="course-list">
+                                <li>Computer Architecture - ARM and RISC-V assembly, CPU architectures, and memory hierarchies</li>
+                                <li>Operating Systems - OS organization, file systems, process/thread  management, and IPC</li>
+                                <li>Compilers - parsing theory, intermediate representations, register allocation, and code generation</li>
+                            </ul>
                         </div>
                     </div>
-
                     <div className="timeline-item">
-                        <div className="timeline-date">2020 - Present</div>
+                        <div className="timeline-date">2021-01 - 2021-09</div>
                         <div className="timeline-content">
                             <h3>Researcher</h3>
-                            <h4>INESC-TEC</h4>
-                            <p>Researching simultaneous and holistic partitioning and optimization of C/C++ applications in CPU-FPGA systems.</p>
+                            <h4>INESC TEC, Porto, Portugal</h4>
+                            <p>Researching methods for offloading program execution traces onto hardware accelerators.</p>
                         </div>
                     </div>
                 </div>
@@ -46,18 +49,24 @@ export default function CV() {
 
                 <div className="timeline">
                     <div className="timeline-item">
-                        <div className="timeline-date">2020 - Present</div>
+                        <div className="timeline-date">2021-10 - Present</div>
                         <div className="timeline-content">
-                            <h3>PhD in Electrical and Computer Engineering</h3>
-                            <h4>Faculty of Engineering, University of Porto (FEUP)</h4>
+                            <h3>PhD in Computer Engineering</h3>
+                            <h4>Faculty of Engineering, University of Porto (FEUP), Portugal</h4>
                         </div>
                     </div>
-                    {/* Placeholder for previous education */}
+                    <div className="timeline-item">
+                        <div className="timeline-date">2024-10 - 2024-12</div>
+                        <div className="timeline-content">
+                            <h3>Visiting Student</h3>
+                            <h4>Carnegie Mellon University, Pittsburgh, USA</h4>
+                        </div>
+                    </div>
                     <div className="timeline-item">
                         <div className="timeline-date">2015 - 2020</div>
                         <div className="timeline-content">
-                            <h3>MSc in Electrical and Computer Engineering</h3>
-                            <h4>Faculty of Engineering, University of Porto (FEUP)</h4>
+                            <h3>MSc in Computer Engineering</h3>
+                            <h4>Faculty of Engineering, University of Porto (FEUP), Portugal</h4>
                         </div>
                     </div>
                 </div>
@@ -69,25 +78,55 @@ export default function CV() {
                     <h2>Skills</h2>
                 </div>
 
+
                 <div className="skills-grid">
                     <div className="skill-category">
-                        <h3>Languages</h3>
+                        <h3>Areas of interesst</h3>
                         <div className="tags">
-                            <span>C/C++</span>
-                            <span>Python</span>
-                            <span>JavaScript/TypeScript</span>
-                            <span>VHDL/Verilog</span>
+                            <span>Compilers</span>
+                            <span>Source-to-Source</span>
+                            <span>Hardware Accelerators</span>
+                            <span>FPGAs</span>
+                            <span>Embedded Systems</span>
+                            <span>High-level Synthesis</span>
+                            <span>AI acceleration</span>
+                            <span>Computer Vision acceleration</span>
                         </div>
                     </div>
-
                     <div className="skill-category">
-                        <h3>technologies</h3>
+                        <h3>Programming Languages</h3>
                         <div className="tags">
-                            <span>FPGA</span>
-                            <span>Embedded Systems</span>
+                            <span>C</span>
+                            <span>C++</span>
+                            <span>Java</span>
+                            <span>Python</span>
+                            <span>JavaScript/TypeScript</span>
+                        </div>
+                    </div>
+                    <div className="skill-category">
+                        <h3>Technologies</h3>
+                        <div className="tags">
+                            <span>clang</span>
+                            <span>LLVM</span>
+                            <span>MLIR</span>
+                            <span>AMD/Xilinx Vitis</span>
+                            <span>XRT</span>
+                            <span>OpenCL</span>
                             <span>Git</span>
                             <span>Linux</span>
-                            <span>React</span>
+                            <span>NPM/Node.js</span>
+                            <span>Copilots & Agentic AI</span>
+                        </div>
+                    </div>
+                    <div className="skill-category">
+                        <h3>Other skills</h3>
+                        <div className="tags">
+                            <span>Teaching skills</span>
+                            <span>Research skills</span>
+                            <span>Technical Writing</span>
+                            <span>Event Organization</span>
+                            <span>Multimodal presentation skills</span>
+                            <span>Fluency in English & Portuguese</span>
                         </div>
                     </div>
                 </div>
