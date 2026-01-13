@@ -5,6 +5,7 @@ import CV from './pages/CV';
 import Portfolio from './pages/Portfolio';
 import Publications from './pages/Publications';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="publications" element={<Publications />} />
           <Route path="blog" element={<Blog />} />
+          <Route path="blog/:slug" element={<BlogPost />} />
         </Route>
       </Routes>
     </HashRouter>

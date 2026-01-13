@@ -47,7 +47,7 @@ export default function Layout() {
 
             <footer className="footer">
                 <div className="container">
-                    <p>© {new Date().getFullYear()} Tiago Lascasas. Built with React & Vite.</p>
+                    <p>© {new Date().getFullYear()} Tiago Lascasas Santos. Built with React & Vite.</p>
                 </div>
             </footer>
         </div>
