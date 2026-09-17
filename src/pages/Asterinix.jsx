@@ -136,7 +136,7 @@ export default function Asterinix() {
                 <div className="w-full max-w-4xl mx-auto aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-black asterinix-embed-box">
                     <iframe
                         ref={iframeRef}
-                        src="/asterinix/"
+                        src="https://tiagolascasas.github.io/asterinix/"
                         title="Asterinix"
                         className="w-full h-full border-0 asterinix-iframe"
                         allow="fullscreen; autoplay"
