@@ -1,0 +1,275 @@
+/* Asterinix Page Styles */
+.asterinix-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+}
+
+/* Back navigation */
+.asterinix-back-nav {
+    display: flex;
+    align-items: center;
+}
+
+.asterinix-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.asterinix-back-link:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-border);
+    transform: translateX(-3px);
+}
+
+/* Header */
+.asterinix-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .asterinix-header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+}
+
+.asterinix-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.asterinix-title {
+    font-size: 1.85rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+}
+
+.asterinix-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .asterinix-header-actions {
+        margin-top: 0;
+    }
+}
+
+.asterinix-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    max-width: 750px;
+}
+
+.asterinix-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+}
+
+/* Embed Container & Utility Styles (matches user-provided Tailwind classes) */
+.w-full {
+    width: 100%;
+}
+
+.max-w-4xl {
+    max-width: 56rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aspect-\[4\/3\] {
+    aspect-ratio: 4 / 3;
+}
+
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.shadow-2xl {
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.45), 0 0 25px -5px rgba(59, 130, 246, 0.2);
+}
+
+.border {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.border-0 {
+    border: 0;
+}
+
+/* Dedicated styles for game frame */
+.asterinix-game-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.asterinix-embed-box {
+    position: relative;
+    background-color: #000000;
+}
+
+.asterinix-iframe {
+    display: block;
+}
+
+/* Fullscreen support */
+.asterinix-embed-box:fullscreen,
+.asterinix-iframe:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    border: none;
+}
+
+.asterinix-embed-box:fullscreen .asterinix-iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Info and Instructions Section */
+.asterinix-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+@media (min-width: 720px) {
+    .asterinix-details-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.asterinix-info-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.asterinix-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.asterinix-card-heading-icon {
+    color: var(--accent-primary);
+}
+
+.asterinix-controls-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.asterinix-control-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.825rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.asterinix-control-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.asterinix-action-label {
+    color: var(--text-secondary);
+}
+
+.asterinix-key-group {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.kbd-badge {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    font-size: 0.725rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.asterinix-tip {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    background-color: var(--bg-tertiary);
+    padding: 0.55rem 0.75rem;
+    border-radius: var(--radius-xs);
+    border-left: 3px solid var(--accent-primary);
+}
+
+.asterinix-story-text {
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.asterinix-story-text strong {
+    color: var(--text-primary);
+}

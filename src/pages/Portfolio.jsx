@@ -1,85 +1,196 @@
-import { Folder, ExternalLink, Github } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { 
+    Github, 
+    FileText, 
+    Search, 
+    Cpu, 
+    Code2,
+    Play 
+} from 'lucide-react';
+import { projects } from '../data/projects';
 import './Portfolio.css';
 
-const projects = [
-    {
-        id: 1,
-        title: 'Coming soon!',
-        description: 'A placeholder for now',
-        tags: ['C', 'C++', 'Compiler', 'Source-to-Source', 'Code transformations'],
-        links: {
-            github: 'https://github.com/tiagolascasas', // Placeholder link
-        }
-    },
-    // {
-    //     id: 1,
-    //     title: 'Native OpenGL Engine',
-    //     description: 'A native Linux OpenGL 3D rendering engine featuring a first-person fly camera, shader management, and basic geometry rendering.',
-    //     tags: ['C++', 'OpenGL', 'Linux', 'GLSL'],
-    //     links: {
-    //         github: 'https://github.com/tiagolascasas/opengl-scene', // Placeholder link
-    //     }
-    // },
-    // {
-    //     id: 2,
-    //     title: 'CPU-FPGA Partitioning Framework',
-    //     description: 'PhD research project focusing on the simultaneous and holistic partitioning and optimization of C/C++ applications in heterogeneous CPU-FPGA systems.',
-    //     tags: ['C++', 'FPGA', 'HLS', 'Research'],
-    //     links: {
-    //         // No link for private research yet
-    //     }
-    // },
-    // {
-    //     id: 3,
-    //     title: 'Personal Website',
-    //     description: 'A static, responsive personal portfolio website built with React and Vite, featuring dark mode and a premium design system.',
-    //     tags: ['React', 'Vite', 'CSS', 'GitHub Pages'],
-    //     links: {
-    //         github: 'https://github.com/tiagolascasas/tiagolascasas.github.io'
-    //     }
-    // }
-];
-
 export default function Portfolio() {
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredProjects = projects.filter(project => {
+        const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
+        const matchesSearch = 
+            searchQuery.trim() === '' ||
+            project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            project.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+
+        return matchesCategory && matchesSearch;
+    });
+
+    const compilersCount = projects.filter(p => p.category === 'compilers').length;
+    const personalCount = projects.filter(p => p.category === 'personal').length;
+
     return (
         <div className="portfolio-container fade-in">
+            {/* PAGE HEADER */}
             <div className="portfolio-header">
-                <h1>Portfolio</h1>
-                <p>A collection of my recent work and research projects.</p>
+                <h1 className="portfolio-title">Projects & Systems</h1>
+                <p className="portfolio-subtitle">
+                    A collection of compilers, hardware acceleration tools, and systems experiments 
+                    from my PhD research and personal GitHub (<a href="https://github.com/tiagolascasas" target="_blank" rel="noopener noreferrer">@tiagolascasas</a>).
+                </p>
             </div>
 
+            {/* CONTROLS: CATEGORIES & SEARCH */}
+            <div className="portfolio-controls">
+                <div className="category-tabs">
+                    <button 
+                        className={`cat-tab ${selectedCategory === 'all' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('all')}
+                    >
+                        <span>All Projects</span>
+                        <span className="tab-count">{projects.length}</span>
+                    </button>
+
+                    <button 
+                        className={`cat-tab ${selectedCategory === 'compilers' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('compilers')}
+                    >
+                        <Cpu size={15} />
+                        <span>Compilers & Systems</span>
+                        <span className="tab-count">{compilersCount}</span>
+                    </button>
+
+                    <button 
+                        className={`cat-tab ${selectedCategory === 'personal' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('personal')}
+                    >
+                        <Code2 size={15} />
+                        <span>Personal Projects</span>
+                        <span className="tab-count">{personalCount}</span>
+                    </button>
+                </div>
+
+                <div className="search-box">
+                    <Search size={16} className="search-icon" />
+                    <input 
+                        type="text" 
+                        placeholder="Filter by keyword or tech (e.g. C++, LLVM, HLS)..." 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="search-input"
+                    />
+                    {searchQuery && (
+                        <button 
+                            className="clear-search"
+                            onClick={() => setSearchQuery('')}
+                            aria-label="Clear search"
+                        >
+                            ✕
+                        </button>
+                    )}
+                </div>
+            </div>
+
+            {/* PROJECTS GRID */}
             <div className="projects-grid">
-                {projects.map(project => (
+                {filteredProjects.map(project => (
                     <div key={project.id} className="project-card">
-                        <div className="card-header">
-                            <Folder className="folder-icon" size={40} />
-                            <div className="card-links">
+                        <div className="project-card-header">
+                            <span className={`badge ${project.category === 'compilers' ? 'badge-industry' : 'badge-academic'}`}>
+                                {project.categoryLabel}
+                            </span>
+
+                            <div className="project-header-links">
                                 {project.links.github && (
-                                    <a href={project.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repo">
-                                        <Github size={20} />
+                                    <a 
+                                        href={project.links.github} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="header-link-btn"
+                                        title="View GitHub Repository"
+                                    >
+                                        <Github size={18} />
                                     </a>
                                 )}
-                                {project.links.demo && (
-                                    <a href={project.links.demo} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                                        <ExternalLink size={20} />
+                                {project.links.play && (
+                                    <Link 
+                                        to={project.links.play} 
+                                        className="header-link-btn"
+                                        title="Play Game"
+                                    >
+                                        <Play size={16} fill="currentColor" />
+                                    </Link>
+                                )}
+                                {project.links.paper && (
+                                    <a 
+                                        href={project.links.paper} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="header-link-btn"
+                                        title="Read Related Publication"
+                                    >
+                                        <FileText size={18} />
                                     </a>
                                 )}
                             </div>
                         </div>
 
-                        <h3 className="project-title">{project.title}</h3>
-                        <div className="project-description">
-                            <p>{project.description}</p>
-                        </div>
+                        <h3 className="project-card-title">{project.title}</h3>
+                        <p className="project-card-desc">{project.description}</p>
 
-                        <div className="project-tags">
-                            {project.tags.map(tag => (
-                                <span key={tag} className="tag">{tag}</span>
-                            ))}
+                        <div className="project-card-footer">
+                            <div className="project-card-tags">
+                                {project.tags.map(tag => (
+                                    <span key={tag} className="tech-tag">{tag}</span>
+                                ))}
+                            </div>
+
+                            <div className="project-card-actions">
+                                {project.links.github && (
+                                    <a 
+                                        href={project.links.github} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="project-action-btn"
+                                    >
+                                        <Github size={15} />
+                                        <span>View on GitHub</span>
+                                    </a>
+                                )}
+                                {project.links.play && (
+                                    <Link 
+                                        to={project.links.play}
+                                        className="project-action-btn play-btn"
+                                    >
+                                        <Play size={13} fill="currentColor" />
+                                        <span>Play Game</span>
+                                    </Link>
+                                )}
+                                {project.links.paper && (
+                                    <a 
+                                        href={project.links.paper} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="project-action-btn paper-btn"
+                                    >
+                                        <FileText size={15} />
+                                        <span>Paper</span>
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
+
+            {filteredProjects.length === 0 && (
+                <div className="no-projects-found">
+                    <p>No projects match your search criteria "{searchQuery}".</p>
+                    <button onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }} className="btn btn-secondary btn-sm">
+                        Reset Filters
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
