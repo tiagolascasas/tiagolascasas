@@ -6,7 +6,7 @@ export const projects = [
     categoryLabel: 'Compilers & Systems',
     title: 'Hoopa (Holistic Partitioning and Optimization Algorithms)',
     description:
-      'Automatic, single-pass algorithms to partitioning and optimizing C/C++ applications for heterogeneous CPU-FPGA systems',
+      'Automatic, single-pass algorithms to partition and optimize C/C++ applications for heterogeneous CPU-FPGA systems.',
     tags: ['C', 'C++', 'TypeScript', 'Compilers', 'Task Graphs', 'AST', 'Source-to-Source', 'HEART 2026'],
     featured: true,
     links: {
@@ -34,7 +34,7 @@ export const projects = [
     categoryLabel: 'Compilers & Systems',
     title: 'Clava Code Transforms',
     description:
-      'A set of advanced C/C++ source-to-source code transformations for Clava, including struct and array flattening, function inlining/outlining/voidifcation, and malloc() hoisting',
+      'A set of advanced C/C++ source-to-source code transformations for Clava, including struct and array flattening, function inlining/outlining/voidification, and malloc() hoisting.',
     tags: ['C', 'C++', 'TypeScript', 'Compilers', 'Code Transformations', 'AST', 'Source-to-Source', 'MCSoC 2025'],
     featured: true,
     links: {
@@ -48,7 +48,7 @@ export const projects = [
     categoryLabel: 'Compilers & Systems',
     title: 'libc-hls',
     description:
-      'A partial reimplementation of the C standard library specifically tailored for High-Level Synthesis (HLS), overcoming native standard library synthesis barriers on FPGAs',
+      'A partial reimplementation of the C standard library specifically tailored for High-Level Synthesis (HLS), overcoming native standard library synthesis barriers on FPGAs.',
     tags: ['C', 'HLS', 'FPGA', 'High-Level Synthesis', 'Embedded Systems', 'Compilers', 'MCSoC 2025'],
     featured: true,
     links: {
@@ -103,7 +103,7 @@ export const projects = [
     categoryLabel: 'Personal Projects',
     title: 'Asterinix',
     description:
-      'Asterinix is the first videogame I\'ve ever made. Originally developed in pure C and assembly for Minix, I lated ported it to Linux and WebAssembly, mostly to remind me of how far I\'ve come :)',
+      'The first video game I ever made, originally developed in pure C and x86 assembly for Minix 3, and later ported to Linux, SDL2, and WebAssembly.',
     tags: ['C', 'x86 Assembly', 'Minix 3', 'Linux', 'SDL2', 'WebAssembly / Emscripten'],
     featured: true,
     links: {

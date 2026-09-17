@@ -302,6 +302,16 @@
     line-height: 1.45;
 }
 
+.resume-inline-link {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.resume-inline-link:hover {
+    text-decoration: underline;
+}
+
 /* PDF EXPORT & PRINT MODE (FORCING LIGHT THEME & COMPACT LAYOUT) */
 .resume-paper.pdf-mode {
     background: #ffffff !important;

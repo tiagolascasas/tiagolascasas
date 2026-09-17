@@ -227,6 +227,44 @@
     line-height: 1.45;
 }
 
+/* TIMELINE SUB-ITEMS (INDENTED VISITING / EXCHANGE PERIODS) */
+.timeline-subitem {
+    margin-top: 0.65rem;
+    margin-left: 0.2rem;
+    padding-left: 0.85rem;
+    border-left: 2px solid var(--accent-subtle, #3b82f640);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.subitem-date {
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.subitem-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.subitem-institution {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.15rem;
+}
+
+.timeline-subitem p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
 /* SIMPLIFIED TEACHING GROUPS */
 .teaching-group {
     display: flex;
@@ -457,6 +495,16 @@
     color: var(--text-primary);
 }
 
+.cv-inline-link {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cv-inline-link:hover {
+    text-decoration: underline;
+}
+
 /* SKILLS CATEGORIES */
 .skills-category-block {
     display: flex;
@@ -638,6 +686,34 @@
     font-size: 0.75rem !important;
     color: #374151 !important;
     line-height: 1.32 !important;
+}
+
+.cv-document.pdf-mode .timeline-subitem {
+    margin-top: 0.35rem !important;
+    padding-left: 0.65rem !important;
+    border-left: 1.5px solid #d1d5db !important;
+    gap: 0.1rem !important;
+}
+
+.cv-document.pdf-mode .subitem-date {
+    font-size: 0.68rem !important;
+    color: #1d4ed8 !important;
+}
+
+.cv-document.pdf-mode .subitem-title {
+    font-size: 0.78rem !important;
+    color: #111827 !important;
+}
+
+.cv-document.pdf-mode .subitem-institution {
+    font-size: 0.74rem !important;
+    color: #4b5563 !important;
+}
+
+.cv-document.pdf-mode .timeline-subitem p {
+    font-size: 0.72rem !important;
+    color: #4b5563 !important;
+    line-height: 1.35 !important;
 }
 
 .cv-document.pdf-mode .teaching-group {

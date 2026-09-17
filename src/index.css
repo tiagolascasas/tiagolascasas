@@ -91,6 +91,33 @@ html {
   }
 }
 
+/* Firefox-specific scaling: compensates for Linux/Gecko DPI scaling differences */
+@supports (-moz-appearance: none) {
+  html {
+    font-size: 18px;
+  }
+  :root {
+    --max-width: 1100px;
+  }
+  @media (max-width: 640px) {
+    html {
+      font-size: 15.5px;
+    }
+  }
+}
+
+html.is-firefox {
+  font-size: 18px;
+}
+html.is-firefox {
+  --max-width: 1100px;
+}
+@media (max-width: 640px) {
+  html.is-firefox {
+    font-size: 15.5px;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);

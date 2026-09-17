@@ -12,6 +12,8 @@ import {
     Copy
 } from 'lucide-react';
 import html2pdf from 'html2pdf.js';
+import { projects } from '../data/projects';
+import { publications } from '../data/publications';
 import './Resume.css';
 
 export default function Resume() {
@@ -99,7 +101,6 @@ export default function Resume() {
             <div className="resume-toolbar no-print" data-html2canvas-ignore>
                 <div className="toolbar-info">
                     <h1 className="toolbar-title">Résumé</h1>
-                    <p className="toolbar-sub">Software, Systems & Compilers Engineering</p>
                 </div>
 
                 <div className="toolbar-actions">
@@ -162,8 +163,8 @@ export default function Resume() {
                 <section className="resume-section">
                     <h2 className="section-heading">Professional Summary</h2>
                     <p className="summary-paragraph">
-                        Systems and compiler engineer with a <strong>PhD in Computer Engineering</strong> from the University of Porto (FEUP, defended July 2026)
-                        and visiting scholar experience at Carnegie Mellon University (CMU). 5+ years of experience in low-level systems programming,
+                        Systems and compiler engineer with a <strong>PhD in Computer Engineering</strong> from the University of Porto (2026)
+                        and visiting scholar experience at Carnegie Mellon University (2024). 5+ years of experience in low-level systems programming,
                         <strong> C++ (17/20)</strong>, <strong>LLVM/Clang compiler passes</strong>, source-to-source program transformations,
                         and <strong>hardware acceleration (FPGAs & High-Level Synthesis)</strong>. Experienced in designing high-throughput task dependency graphs,
                         optimizing dataflow pipelines, minimizing runtime communication latency, and teaching university-level systems courses.
@@ -209,7 +210,7 @@ export default function Resume() {
                             <li>Architected and implemented automated C/C++ source-to-source transformation and compiler passes in C++ and Clang to holistically partition algorithms between CPUs and FPGA accelerators.</li>
                             <li>Engineered an Extended Task Graph (ETG) dependency analysis tool, generating flexible-granularity task DAGs to maximize parallel execution while respecting memory constraints.</li>
                             <li>Integrated with AMD Vitis and XRT runtimes, minimizing PCIe/memory data transfers and delivering significant speedup over standard multicore CPU execution.</li>
-                            <li>Authored 7 peer-reviewed papers and conference presentations at premier venues including IEEE MCSoC, IEEE FCCM, and ACM LCTES.</li>
+                            <li>Authored {publications.filter(p => p.type !== 'thesis').length} peer-reviewed papers across premier venues (ACM HEART, IEEE MCSoC, IEEE FCCM, ACM LCTES) and {publications.filter(p => p.type === 'thesis').length} university theses.</li>
                         </ul>
                     </div>
 
@@ -267,10 +268,10 @@ export default function Resume() {
                                 <h3 className="item-title">PhD in Computer Engineering</h3>
                                 <div className="item-company">Faculty of Engineering, University of Porto (FEUP)</div>
                             </div>
-                            <div className="item-meta">2021 – 2026</div>
+                            <div className="item-meta">Oct 2021 – Jul 2026</div>
                         </div>
                         <p className="education-desc">
-                            Dissertation: <em>A Holistic Approach for Partitioning and Optimizing Software Applications on FPGAs</em>
+                            Dissertation: <em>{publications.find(p => p.id === 'santos2026phd')?.title || 'A Holistic Approach for Partitioning and Optimizing Software Applications on FPGAs'}</em>
                         </p>
                     </div>
 
@@ -280,10 +281,10 @@ export default function Resume() {
                                 <h3 className="item-title">MSc in Computer Engineering</h3>
                                 <div className="item-company">Faculty of Engineering, University of Porto (FEUP)</div>
                             </div>
-                            <div className="item-meta">2015 – 2020</div>
+                            <div className="item-meta">Sep 2015 – Jul 2020</div>
                         </div>
                         <p className="education-desc">
-                            Dissertation: <em>Acceleration of Applications with FPGA-based Computing Machines: Code Restructuring.</em>
+                            Dissertation: <em>{publications.find(p => p.id === 'dos2020acceleration')?.title || 'Acceleration of Applications with FPGA-based Computing Machines: Code Restructuring'}</em>
                         </p>
                     </div>
                 </section>
@@ -292,33 +293,36 @@ export default function Resume() {
                 <section className="resume-section">
                     <h2 className="section-heading">Key Engineering Projects</h2>
 
-                    <div className="project-bullet">
-                        <strong>Heterogeneous Vitis Apps</strong> (C++, OpenCL, Vitis XRT): Benchmark implementations and acceleration pipelines for CPU-FPGA systems, exploring memory transfer optimizations and asynchronous queue dispatch.
-                    </div>
-                    <div className="project-bullet">
-                        <strong>libc-hls</strong> (C, High-Level Synthesis, FPGAs): Clean reimplementation of C standard library functions customized to circumvent synthesis limitations on FPGA toolchains.
-                    </div>
-                    <div className="project-bullet">
-                        <strong>Extended Task Graph (ETG)</strong> (TypeScript, Compilers, ASTs): Automated compiler tool extracting flexible task dependencies from C source code (ACM LCTES 2024).
-                    </div>
-                    <div className="project-bullet">
-                        <strong>DOOM on Terminal</strong> (C, Linux, ncurses): Native port rendering 3D graphics in a terminal emulator via character buffer manipulation.
-                    </div>
+                    {projects
+                        .filter(p => p.category !== 'personal' && ['hoopa', 'extended-task-graph', 'clava-code-transforms', 'libc-hls'].includes(p.id))
+                        .map(proj => (
+                            <div key={proj.id} className="project-bullet">
+                                <strong>{proj.title}</strong> ({proj.tags.slice(0, 3).join(', ')}): {proj.description}
+                                {proj.links.github && (
+                                    <span className="no-print" data-html2canvas-ignore>
+                                        {' '}[<a href={proj.links.github} target="_blank" rel="noopener noreferrer" className="resume-inline-link">Code</a>]
+                                    </span>
+                                )}
+                            </div>
+                        ))}
                 </section>
 
                 {/* SELECTED PUBLICATIONS */}
                 <section className="resume-section">
                     <h2 className="section-heading">Selected Publications</h2>
                     <ul className="pub-list">
-                        <li>
-                            <strong>IEEE MCSoC 2025:</strong> T. Santos, J. Bispo, J. M. P. Cardoso, J. C. Hoe, <em>"HLS to FPGAs: Extending Software Regions Via Transformations and Offloading Functions to the CPU"</em>.
-                        </li>
-                        <li>
-                            <strong>ACM LCTES 2024:</strong> T. Santos, J. Bispo, J. M. P. Cardoso, <em>"A Flexible-Granularity Task Graph Representation and Its Generation from C Applications"</em>.
-                        </li>
-                        <li>
-                            <strong>IEEE FCCM 2025:</strong> T. Santos, J. Bispo, J. M. P. Cardoso, <em>"Holistic Partitioning and Optimization of CPU-FPGA Applications Through Source-to-Source Compilation"</em>.
-                        </li>
+                        {publications
+                            .filter(p => ['santos2026expanding', 'santos2025mcsoc', 'santos2024flexible', 'santos2025ph'].includes(p.id))
+                            .map(pub => (
+                                <li key={pub.id}>
+                                    <strong>{pub.venue}:</strong> {pub.authors}, <em>"{pub.title}"</em>.
+                                    {(pub.link || pub.paper) && (
+                                        <span className="no-print" data-html2canvas-ignore>
+                                            {' '}[<a href={pub.link || pub.paper} target="_blank" rel="noopener noreferrer" className="resume-inline-link">Link</a>]
+                                        </span>
+                                    )}
+                                </li>
+                            ))}
                     </ul>
                 </section>
             </div>

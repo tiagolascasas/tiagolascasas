@@ -19,10 +19,12 @@ import {
     Globe,
     CheckCircle2,
     Check,
-    Copy
+    Copy,
+    Github
 } from 'lucide-react';
 import html2pdf from 'html2pdf.js';
-import { publications } from '../data/publications';
+import { publications, forumsAndDemos, academicServices } from '../data/publications';
+import { projects } from '../data/projects';
 import { teachingCourses } from '../data/teaching';
 import './CV.css';
 
@@ -99,13 +101,43 @@ export default function CV() {
         });
     };
 
+    const confCount = publications.filter(p => p.type === 'conference').length;
+    const posterCount = publications.filter(p => p.type === 'poster').length;
+    const thesisCount = publications.filter(p => p.type === 'thesis').length;
+
     const filteredPubs = publications.filter(pub => {
         if (activeFilter === 'all') return true;
         if (activeFilter === 'conference') return pub.type === 'conference';
         if (activeFilter === 'poster') return pub.type === 'poster';
         if (activeFilter === 'thesis') return pub.type === 'thesis';
         return true;
-    });
+    }).sort((a, b) => b.year - a.year);
+
+    const allPresentations = [
+        ...academicServices.talks.map(t => ({
+            id: t.id,
+            venue: t.venue,
+            year: t.year,
+            title: t.title,
+            label: `${t.type}${t.location ? `, ${t.location}` : ''}`
+        })),
+        ...forumsAndDemos.filter(d => d.type !== 'demo').map(f => ({
+            id: f.id,
+            venue: f.venue,
+            year: f.year,
+            title: f.title,
+            label: `${f.typeLabel}${f.location ? `, ${f.location}` : ''}`
+        })),
+        ...publications.filter(p => p.type !== 'thesis').map(p => ({
+            id: p.id,
+            venue: p.venue,
+            year: p.year,
+            title: p.title,
+            label: p.typeLabel
+        }))
+    ].sort((a, b) => b.year - a.year);
+
+    const researchProjects = projects.filter(p => p.category !== 'personal');
 
     return (
         <div className="cv-page-wrapper fade-in">
@@ -126,7 +158,6 @@ export default function CV() {
             <div className="cv-toolbar no-print" data-html2canvas-ignore>
                 <div className="toolbar-info">
                     <h1 className="toolbar-title">Curriculum Vitae</h1>
-                    <p className="toolbar-sub">Comprehensive academic and scientific record</p>
                 </div>
 
                 <div className="toolbar-actions">
@@ -160,8 +191,9 @@ export default function CV() {
                 <a href="#appointments" className="quicknav-pill">Appointments</a>
                 <a href="#teaching" className="quicknav-pill">Teaching</a>
                 <a href="#publications" className="quicknav-pill">Publications ({publications.length})</a>
-                <a href="#presentations" className="quicknav-pill">Presentations</a>
-                <a href="#service" className="quicknav-pill">Service & Honors</a>
+                <a href="#presentations" className="quicknav-pill">Presentations ({allPresentations.length})</a>
+                <a href="#service" className="quicknav-pill">Service & Demos</a>
+                <a href="#projects" className="quicknav-pill">Projects ({researchProjects.length})</a>
                 <a href="#skills" className="quicknav-pill">Skills</a>
             </div>
 
@@ -190,6 +222,14 @@ export default function CV() {
                         <span className="contact-separator">•</span>
                         <a href="https://linkedin.com/in/tiagolascasas" target="_blank" rel="noopener noreferrer" className="contact-col">
                             <Globe size={14} /> LinkedIn
+                        </a>
+                        <span className="contact-separator">•</span>
+                        <a href="https://orcid.org/0000-0002-3673-9400" target="_blank" rel="noopener noreferrer" className="contact-col">
+                            <Globe size={14} /> ORCID
+                        </a>
+                        <span className="contact-separator">•</span>
+                        <a href="https://github.com/tiagolascasas" target="_blank" rel="noopener noreferrer" className="contact-col">
+                            <Github size={14} /> GitHub
                         </a>
                     </div>
                 </header>
@@ -226,31 +266,39 @@ export default function CV() {
 
                     <div className="cv-timeline">
                         <div className="timeline-item">
-                            <div className="item-date">2021 – 2026 (Defended July 2026)</div>
+                            <div className="item-date">Oct 2021 – Jul 2026 (Defended July 2026)</div>
                             <div className="item-details">
                                 <h3>PhD in Computer Engineering</h3>
                                 <h4>Faculty of Engineering, University of Porto (FEUP) & INESC TEC, Portugal</h4>
-                                <p><strong>Thesis:</strong> <em>Simultaneous and Holistic Partitioning and Optimization of C/C++ Applications in CPU-FPGA Systems</em></p>
+                                <p><strong>Thesis:</strong> <em>{publications.find(p => p.id === 'santos2026phd')?.title || 'A Holistic Approach for Partitioning and Optimizing Software Applications on FPGAs'}</em></p>
                                 <p><strong>Supervisors:</strong> Prof. João Bispo & Prof. João M. P. Cardoso</p>
+
+                                <div className="timeline-subitem">
+                                    <div className="subitem-date">Oct 2024 – Dec 2024</div>
+                                    <div className="subitem-details">
+                                        <h4 className="subitem-title">Visiting Research Scholar</h4>
+                                        <div className="subitem-institution">Carnegie Mellon University (CMU), Pittsburgh, PA, USA</div>
+                                        <p>Department of Electrical and Computer Engineering (ECE). Collaborative research with <strong>Prof. James C. Hoe</strong> on compiler transformations to improve HLS synthesis of large C/C++ code regions.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div className="timeline-item">
-                            <div className="item-date">Oct 2024 – Dec 2024</div>
-                            <div className="item-details">
-                                <h3>Visiting Research Scholar</h3>
-                                <h4>Carnegie Mellon University (CMU), Pittsburgh, PA, USA</h4>
-                                <p>Department of Electrical and Computer Engineering (ECE). Collaborative research with <strong>Prof. James C. Hoe</strong> on compiler transformations to improve HLS synthesis of large C/C++ code regions.</p>
-                            </div>
-                        </div>
-
-                        <div className="timeline-item">
-                            <div className="item-date">2015 – 2020</div>
+                            <div className="item-date">Sep 2015 – Jul 2020</div>
                             <div className="item-details">
                                 <h3>Integrated Master’s (BSc + MSc) in Computer Engineering</h3>
                                 <h4>Faculty of Engineering, University of Porto (FEUP), Portugal</h4>
-                                <p><strong>Dissertation:</strong> <em>Acceleration of Applications with FPGA-based Computing Machines: Code Restructuring</em></p>
-                                <p>Graduated with distinction.</p>
+                                <p><strong>Dissertation:</strong> <em>{publications.find(p => p.id === 'dos2020acceleration')?.title || 'Acceleration of Applications with FPGA-based Computing Machines: Code Restructuring'}</em></p>
+
+                                <div className="timeline-subitem">
+                                    <div className="subitem-date">Sep 2019 – Dec 2019</div>
+                                    <div className="subitem-details">
+                                        <h4 className="subitem-title">Erasmus+ Exchange Student</h4>
+                                        <div className="subitem-institution">Aalto University, Espoo, Finland</div>
+                                        <p>Semester of exchange studies.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -362,19 +410,19 @@ export default function CV() {
                             className={`filter-tab ${activeFilter === 'conference' ? 'active' : ''}`}
                             onClick={() => setActiveFilter('conference')}
                         >
-                            Conference Papers
+                            Conference Papers ({confCount})
                         </button>
                         <button
                             className={`filter-tab ${activeFilter === 'poster' ? 'active' : ''}`}
                             onClick={() => setActiveFilter('poster')}
                         >
-                            Posters & WIP
+                            Posters & WIP ({posterCount})
                         </button>
                         <button
                             className={`filter-tab ${activeFilter === 'thesis' ? 'active' : ''}`}
                             onClick={() => setActiveFilter('thesis')}
                         >
-                            Theses
+                            Theses ({thesisCount})
                         </button>
                     </div>
 
@@ -417,6 +465,13 @@ export default function CV() {
                                             </a>
                                         )}
 
+                                        {pub.slides && (
+                                            <a href={pub.slides} target="_blank" rel="noopener noreferrer" className="action-pill">
+                                                <Presentation size={13} />
+                                                <span>Slides PDF</span>
+                                            </a>
+                                        )}
+
                                         {pub.poster && (
                                             <a href={pub.poster} target="_blank" rel="noopener noreferrer" className="action-pill">
                                                 <Download size={13} />
@@ -445,27 +500,16 @@ export default function CV() {
                     </div>
 
                     <ul className="simple-cv-list">
-                        <li>
-                            <strong>IEEE MCSoC 2025:</strong> <em>"HLS to FPGAs: Extending Software Regions Via Transformations and Offloading Functions to the CPU"</em> — Oral Presentation, Singapore.
-                        </li>
-                        <li>
-                            <strong>IEEE FCCM 2025:</strong> <em>"Ph.D. Project: Holistic Partitioning and Optimization of CPU-FPGA Applications Through Source-to-Source Compilation"</em> — PhD Forum Poster, Fayetteville, AR, USA.
-                        </li>
-                        <li>
-                            <strong>IEEE FCCM 2025:</strong> <em>"On Improving the HLS Compatibility of Large C/C++ Code Regions"</em> — Poster Presentation, Fayetteville, AR, USA.
-                        </li>
-                        <li>
-                            <strong>Carnegie Mellon University (2024):</strong> Research presentation on CPU-FPGA partitioning and HLS code restructuring — CALCM / Systems Seminar.
-                        </li>
-                        <li>
-                            <strong>ACM LCTES 2024:</strong> <em>"A Flexible-Granularity Task Graph Representation and Its Generation from C Applications"</em> — Work-in-Progress Presentation.
-                        </li>
-                        <li>
-                            <strong>IEEE PACT 2023:</strong> <em>"A CPU-FPGA Holistic Source-to-Source Compilation Approach for Partitioning and Optimizing C/C++ Applications"</em> — PhD Forum Poster, Vienna, Austria.
-                        </li>
-                        <li>
-                            <strong>IEEE ICFPT 2021 & 2020:</strong> Multiple papers presented on configurable loop accelerators and automated HLS directive insertion.
-                        </li>
+                        {allPresentations.map(item => {
+                            const venueLabel = item.venue.includes(String(item.year))
+                                ? item.venue
+                                : `${item.venue} (${item.year})`;
+                            return (
+                                <li key={item.id}>
+                                    <strong>{venueLabel}:</strong> <em>"{item.title}"</em> — {item.label}.
+                                </li>
+                            );
+                        })}
                     </ul>
                 </section>
 
@@ -477,15 +521,62 @@ export default function CV() {
                     </div>
 
                     <ul className="simple-cv-list">
-                        <li>
-                            <strong>Design Automation Conference (DAC 2025):</strong> University Demonstration — <em>"Holistic Source-to-Source Compilation for CPU-FPGA Systems"</em>.
-                        </li>
-                        <li>
-                            <strong>HiPEAC 2024:</strong> European Network on High Performance, Embedded Architecture and Compilation — Poster Session Participant.
-                        </li>
-                        <li>
-                            <strong>Peer Reviewing:</strong> Sub-reviewer for international conferences and workshops in embedded systems, FPGAs, and compilers.
-                        </li>
+                        {forumsAndDemos.filter(d => d.type === 'demo').map(demo => {
+                            const venueLabel = demo.venue.includes(String(demo.year))
+                                ? demo.venue
+                                : `${demo.venue} (${demo.year})`;
+                            return (
+                                <li key={demo.id}>
+                                    <strong>{venueLabel}:</strong> {demo.typeLabel} — <em>"{demo.title}"</em>{demo.location ? ` (${demo.location})` : ''}.
+                                </li>
+                            );
+                        })}
+                        {academicServices.reviews.map(rev => {
+                            const venueLabel = rev.venue.includes(String(rev.period))
+                                ? rev.venue
+                                : `${rev.venue} (${rev.period})`;
+                            return (
+                                <li key={rev.id}>
+                                    <strong>{venueLabel}:</strong> {rev.role}.
+                                </li>
+                            );
+                        })}
+                        {academicServices.organization.map(org => {
+                            const venueLabel = org.venue.includes(String(org.period))
+                                ? org.venue
+                                : `${org.venue} (${org.period})`;
+                            return (
+                                <li key={org.id}>
+                                    <strong>{venueLabel}:</strong> {org.role}.
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </section>
+
+                {/* RESEARCH & ENGINEERING PROJECTS */}
+                <section id="projects" className="cv-section">
+                    <div className="cv-section-title">
+                        <Code className="section-icon" size={20} />
+                        <h2>Research & Engineering Projects</h2>
+                    </div>
+
+                    <ul className="simple-cv-list">
+                        {researchProjects.map(proj => (
+                            <li key={proj.id}>
+                                <strong>{proj.title}</strong> ({proj.tags.slice(0, 3).join(', ')}): {proj.description}
+                                {proj.links.github && (
+                                    <span className="no-print" data-html2canvas-ignore>
+                                        {' '}— <a href={proj.links.github} target="_blank" rel="noopener noreferrer" className="cv-inline-link">GitHub</a>
+                                    </span>
+                                )}
+                                {proj.links.paper && (
+                                    <span className="no-print" data-html2canvas-ignore>
+                                        {' '}— <a href={proj.links.paper} target="_blank" rel="noopener noreferrer" className="cv-inline-link">Paper</a>
+                                    </span>
+                                )}
+                            </li>
+                        ))}
                     </ul>
                 </section>
 

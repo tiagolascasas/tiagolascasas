@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-    Github, 
-    FileText, 
-    Search, 
-    Cpu, 
+import {
+    Github,
+    FileText,
+    Search,
+    Cpu,
     Code2,
-    Play 
+    Play
 } from 'lucide-react';
 import { projects } from '../data/projects';
 import './Portfolio.css';
@@ -17,7 +17,7 @@ export default function Portfolio() {
 
     const filteredProjects = projects.filter(project => {
         const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
-        const matchesSearch = 
+        const matchesSearch =
             searchQuery.trim() === '' ||
             project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -33,9 +33,9 @@ export default function Portfolio() {
         <div className="portfolio-container fade-in">
             {/* PAGE HEADER */}
             <div className="portfolio-header">
-                <h1 className="portfolio-title">Projects & Systems</h1>
+                <h1 className="portfolio-title">Projects</h1>
                 <p className="portfolio-subtitle">
-                    A collection of compilers, hardware acceleration tools, and systems experiments 
+                    A collection of compilers, hardware acceleration tools, and systems experiments
                     from my PhD research and personal GitHub (<a href="https://github.com/tiagolascasas" target="_blank" rel="noopener noreferrer">@tiagolascasas</a>).
                 </p>
             </div>
@@ -43,7 +43,7 @@ export default function Portfolio() {
             {/* CONTROLS: CATEGORIES & SEARCH */}
             <div className="portfolio-controls">
                 <div className="category-tabs">
-                    <button 
+                    <button
                         className={`cat-tab ${selectedCategory === 'all' ? 'active' : ''}`}
                         onClick={() => setSelectedCategory('all')}
                     >
@@ -51,7 +51,7 @@ export default function Portfolio() {
                         <span className="tab-count">{projects.length}</span>
                     </button>
 
-                    <button 
+                    <button
                         className={`cat-tab ${selectedCategory === 'compilers' ? 'active' : ''}`}
                         onClick={() => setSelectedCategory('compilers')}
                     >
@@ -60,7 +60,7 @@ export default function Portfolio() {
                         <span className="tab-count">{compilersCount}</span>
                     </button>
 
-                    <button 
+                    <button
                         className={`cat-tab ${selectedCategory === 'personal' ? 'active' : ''}`}
                         onClick={() => setSelectedCategory('personal')}
                     >
@@ -72,15 +72,15 @@ export default function Portfolio() {
 
                 <div className="search-box">
                     <Search size={16} className="search-icon" />
-                    <input 
-                        type="text" 
-                        placeholder="Filter by keyword or tech (e.g. C++, LLVM, HLS)..." 
+                    <input
+                        type="text"
+                        placeholder="Filter by keyword or tech (e.g. C++, LLVM, HLS)..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="search-input"
                     />
                     {searchQuery && (
-                        <button 
+                        <button
                             className="clear-search"
                             onClick={() => setSearchQuery('')}
                             aria-label="Clear search"
@@ -102,10 +102,10 @@ export default function Portfolio() {
 
                             <div className="project-header-links">
                                 {project.links.github && (
-                                    <a 
-                                        href={project.links.github} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
+                                    <a
+                                        href={project.links.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="header-link-btn"
                                         title="View GitHub Repository"
                                     >
@@ -113,8 +113,8 @@ export default function Portfolio() {
                                     </a>
                                 )}
                                 {project.links.play && (
-                                    <Link 
-                                        to={project.links.play} 
+                                    <Link
+                                        to={project.links.play}
                                         className="header-link-btn"
                                         title="Play Game"
                                     >
@@ -122,10 +122,10 @@ export default function Portfolio() {
                                     </Link>
                                 )}
                                 {project.links.paper && (
-                                    <a 
-                                        href={project.links.paper} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
+                                    <a
+                                        href={project.links.paper}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="header-link-btn"
                                         title="Read Related Publication"
                                     >
@@ -147,9 +147,9 @@ export default function Portfolio() {
 
                             <div className="project-card-actions">
                                 {project.links.github && (
-                                    <a 
-                                        href={project.links.github} 
-                                        target="_blank" 
+                                    <a
+                                        href={project.links.github}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className="project-action-btn"
                                     >
@@ -158,7 +158,7 @@ export default function Portfolio() {
                                     </a>
                                 )}
                                 {project.links.play && (
-                                    <Link 
+                                    <Link
                                         to={project.links.play}
                                         className="project-action-btn play-btn"
                                     >
@@ -167,9 +167,9 @@ export default function Portfolio() {
                                     </Link>
                                 )}
                                 {project.links.paper && (
-                                    <a 
-                                        href={project.links.paper} 
-                                        target="_blank" 
+                                    <a
+                                        href={project.links.paper}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className="project-action-btn paper-btn"
                                     >

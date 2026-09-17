@@ -31,8 +31,7 @@ export default function Home() {
 
                         <h1 className="hero-name">Tiago Lascasas Santos</h1>
                         <p className="hero-headline">
-                            Building high-performance software at the intersection of <strong>compilers</strong>,
-                            <strong> systems programming</strong>, and <strong>hardware acceleration</strong>.
+                            Building the tools that bridge the gap between human abstraction and hardware reality.
                         </p>
 
                         {/* AT-A-GLANCE OVERVIEW CHIPS */}
@@ -46,12 +45,12 @@ export default function Home() {
                                 <span>PhD in Computer Engineering (University of Porto, Portugal)</span>
                             </div>
                             <div className="chip">
-                                <Cpu size={14} className="chip-icon" />
-                                <span>Visiting Scholar Alum @ Carnegie Mellon University (CMU)</span>
+                                <Code size={14} className="chip-icon" />
+                                <span>C++, C, Compilers, LLVM, MLIR, FPGA/Vitis, High-Level Synthesis</span>
                             </div>
                             <div className="chip">
-                                <Code size={14} className="chip-icon" />
-                                <span>C++, C, LLVM, MLIR, Linux, FPGA/Vitis, High-Level Synthesis</span>
+                                <Cpu size={14} className="chip-icon" />
+                                <span>Visiting Scholar Alum @ Carnegie Mellon University (CMU)</span>
                             </div>
                         </div>
 
