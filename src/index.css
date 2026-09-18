@@ -3,7 +3,7 @@
 :root {
   /* Measurements */
   --header-height: 3.25rem;
-  --max-width: 960px;
+  --max-width: 860px;
   --radius-xs: 0.25rem;
   --radius-sm: 0.35rem;
   --radius-md: 0.5rem;
@@ -82,22 +82,22 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 15px;
+  font-size: 14.25px;
 }
 
 @media (max-width: 640px) {
   html {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
-/* Firefox-specific scaling: compensates for Linux/Gecko DPI scaling differences */
+/* Firefox-specific scaling: compensates for Linux Gecko DPI difference */
 @supports (-moz-appearance: none) {
-  html {
-    font-size: 18px;
-  }
   :root {
     --max-width: 1100px;
+  }
+  html {
+    font-size: 18px;
   }
   @media (max-width: 640px) {
     html {
@@ -108,8 +108,6 @@ html {
 
 html.is-firefox {
   font-size: 18px;
-}
-html.is-firefox {
   --max-width: 1100px;
 }
 @media (max-width: 640px) {
