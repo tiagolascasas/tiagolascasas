@@ -7,11 +7,13 @@ import Portfolio from './pages/Portfolio';
 import Research from './pages/Research';
 import About from './pages/About';
 import Asterinix from './pages/Asterinix';
+import AnalyticsTracker from './components/AnalyticsTracker';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
+      <AnalyticsTracker />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
